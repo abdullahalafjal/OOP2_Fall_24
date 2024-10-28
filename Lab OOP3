@@ -1,1 +1,59 @@
+class Person:
+    def __init__(self, fname, lname):
+        self.fname = fname
+        self.lname = lname
+
+    def display(self):
+        print(self.fname + " " + self.lname)
+
+
+class Student(Person):
+    def __init__(self, fname, lname, gyear):
+        Person.__init__(self, fname, lname)
+        # super().__init__(fname, lname)
+        self.gyear = gyear
+
+    def display(self):
+        print(self.fname + " " + self.lname + " ", self.gyear)
+
+
+class Teacher(Person):
+    def __init__(self, fname, lname, joining_year):
+        super().__init__(fname, lname)
+        self.joining_year = joining_year
+
+    def display(self):
+        print(self.fname + " " + self.lname + " ", self.joining_year)
+
+
+class Alumni(Student):
+    pass
+
+
+class Current(Student):
+    pass
+
+
+class University(Student, Teacher):
+    def __init__(self, fname, lname, joining_year, uni_name):
+        super().__init__(fname, lname, joining_year)
+        self.uni_name = uni_name
+
+    def display(self):
+        print(self.uni_name)
+
+    def display(self):
+        print(self.fname + " " + self.lname + " ", self.joining_year)
+
+
+p1 = Person("ABC", "DEF")
+p1.display()
+s1 = Student("ABC", "DEF", 2024)
+s1.display()
+t1 = Teacher("MNO", "PQR", 2023)
+t1.display()
+a1 = Alumni("AAA", "DDD", 2016)
+a1.display()
+c1 = Current("AAA", "DDD", 2016)
+c1.display()
 
