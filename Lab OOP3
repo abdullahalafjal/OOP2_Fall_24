@@ -57,3 +57,91 @@ a1.display()
 c1 = Current("AAA", "DDD", 2016)
 c1.display()
 
+# 02
+
+
+class Person:
+    def __init__(self, fname, lname):
+        print("Person Constructor")
+        self.firstname = fname
+        self.lastname = lname
+
+    def display(self):
+        print(self.firstname, self.lastname)
+
+
+class Student(Person):
+    def __init__(self, fname, lname, gyear):
+        print("Student Constructor")
+        Person.__init__(self, fname, lname)
+        self.graduationYear = gyear
+
+    def display(self):
+        # super().display()
+        print(self.graduationYear)
+
+
+class Teacher(Person):
+    def __init__(self, fname, lname, year):
+        print("Teacher Constructor")
+        Person.__init__(self, fname, lname)
+        self.joiningYear = year
+
+    def display(self):
+        print(self.joiningYear)
+
+
+class Admin(Person):
+    def __init__(self, fname, lname, year):
+        print("Admin Constructor")
+        Person.__init__(self, fname, lname)
+        self.Year = year
+
+    def display_year(self):
+        print(self.Year)
+
+
+class CurrentStudent(Student):
+    def __init__(self, fname, lname, jyear):
+        print("Current Student Constructor")
+        super().__init__(fname, lname, jyear)
+        self.current_semester = 6
+
+    def display(self):
+        print(self.current_semester)
+
+
+class AlumniStudent(Student):
+    def __init__(self, fname, lname, jyear):
+        print("AlumniStudent Constructor")
+        super().__init__(fname, lname, jyear)
+        self.passing_year = 2018
+
+    def display(self):
+        print(self.passing_year)
+
+
+class Employee(Teacher, Admin):
+    def __init__(self, fname, lname, year, id):
+        print("Employee Constructor")
+        super().__init__(fname, lname, year)
+        self.id = id
+
+    def display(self):
+        print(self.id)
+
+
+p1 = Person("AAA", "BBB")
+p1.display()
+s1 = Student("CCC", "DDD", 2024)
+s1.display()
+t1 = Teacher("CCC", "DDD", 2024)
+t1.display()
+a11 = Admin("CCC", "DDD", 2024)
+a11.display_year()
+c1 = CurrentStudent("CCC", "DDD", 2024)
+c1.display()
+a1 = AlumniStudent("CCC", "DDD", 2024)
+a1.display()
+e1 = Employee("CCC", "DDD", 2024, 71)
+e1.display()
