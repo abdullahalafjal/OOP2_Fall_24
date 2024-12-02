@@ -1,0 +1,66 @@
+from abc import ABC, abstractmethod
+
+class InvalidAmountException(Exception):
+    pass
+
+class BankAccount(ABC):
+    @abstractmethod
+    def deposit(self, amount):
+        pass
+
+    @abstractmethod
+    def withdraw(self, amount):
+        pass
+
+class AccountHolder(BankAccount):
+    def __init__(self, name, balance, acc_num):
+        self._balance = balance
+        self.__name = name
+        self.__acc_num = acc_num
+    
+    def deposit(self, amount):
+        if (amount < 0):
+            raise InvalidAmountException
+        self._balance += amount
+        print("After Deposit New balance:", self._balance)
+    
+    def withdraw(self, amount):
+        if (amount < 0):
+            raise InvalidAmountException
+        if (amount > self._balance):
+            raise ValueError
+        self._balance -= amount
+        print("Withdraw successful New balance:", self._balance)
+
+    def setBalance(self, balance):
+        self._balance = balance
+
+    def setName(self, name):
+        self.__name = name
+
+    def setAccountNum(self, acc_num):
+        self.__acc_num =  acc_num
+    
+    def getBalance(self):
+        return self._balance
+
+    def getName(self):
+        return  self.__name
+
+    def setAccountNum(self):
+        return self.__acc_num
+    
+account = AccountHolder("Afjal", 30000, 1000)
+try:
+    account.deposit(100)
+    account.withdraw(2000)
+except ValueError:
+    print("There is a value error!")
+except InvalidAmountException:
+    print("There is an invalid amount exception.")
+except:
+    print("There are other error!")
+finally:
+    print("congratulations!")
+
+print(account.getName())
