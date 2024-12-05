@@ -1,0 +1,81 @@
+# Task -01
+class Vehicle:
+
+    def start(self):
+        print("Vehicle is starting")
+
+    def stop(self):
+        print("Vehicle is stopping.")
+
+
+class Car(Vehicle):
+
+    def start(self):
+        print("Car is starting")
+
+    def stop(self):
+        print("Car is stopping")
+
+
+class Motorcycle(Vehicle):
+
+    def start(self):
+        print("Motorcycle is starting")
+
+    def stop(self):
+        print("Motorcycle is stopping.")
+
+
+vehicle = Vehicle()
+car = Car()
+motorcycle = Motorcycle()
+
+print("Using Vehicle Class:\n")
+vehicle.start()
+vehicle.stop()
+
+print("\nUsing Car Class:\n")
+car.start()
+car.stop()
+
+print("\nUsing Motorcycle Class:\n")
+motorcycle.start()
+motorcycle.stop()
+
+# Task -02
+from abc import ABC, abstractmethod
+
+
+class Vehicle(ABC):
+    def __init__(self, Brand):
+        self.Brand = Brand
+
+    @abstractmethod
+    def Start_Engine(self):
+        pass
+
+    @abstractmethod
+    def Description(self):
+        pass
+
+
+class Car(Vehicle):
+    def __init__(self, Brand, model):
+        super().__init__(Brand)
+        self.model = model
+
+    def Start_Engine(self):
+        print(f"Brand: {self.Brand}.")
+        print(f"Model: {self.model}")
+
+    def Description(self):
+        print(f"Description: {self.Brand} {self.model}")
+
+
+try:
+    c1 = Car("Suzuki", "43443")
+    c1.Start_Engine()
+    c1.Description()
+
+except TypeError as e:
+    print(f"Error: {e}")
